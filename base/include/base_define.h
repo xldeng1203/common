@@ -2,14 +2,14 @@
      File creator: neil deng
 */
 
-#ifndef __BASE_DEFINE_H__
-#define __BASE_DEFINE_H__
+#ifndef _BASE_DEFINE_H_
+#define _BASE_DEFINE_H_
 
 #include <string.h>
 #include <stdarg.h>
 #include <cstdlib>
 #include <cstdio>
-#include <csting>
+#include <cstring>
 
 using std::string;
 
@@ -81,6 +81,8 @@ typedef void* LZ_POINT;
 #define LZ_MAX(a, b)    ((a) > (b) ? (a) : (b))
 #define LZ_MIN(a, b)    ((a) < (b) ? (a) : (b))
 #define LZ_CEIL(a, b)    ((a) == 0 ?  0 : ((a) - 1) / (b) + 1)
+#define DIVIDE(a, b) ((a) / ( (b) > 0 ? (b) : 1))
+#define MOD(a, b) ((a) % ( (b) > 0 ? (b) : 1))
 
 #define LZ_UNUSED(x)        //如果 有些参数在函数类没用到，用这个可以避免警告
 #define LZ_NAME(x)  #x
@@ -131,8 +133,6 @@ typedef int SOCKET;
 #define lz_snwprintf    snprintf
 #define lz_vsnwprintf   snprintf
 
-#define DIVIDE(a, b) ((a) / ( (b) > 0 ? (b) : 1))
-#define MOD(a, b) ((a) % ( (b) > 0 ? (b) : 1))
 
 //最大值常量枚举
 enum
