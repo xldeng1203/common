@@ -14,7 +14,7 @@ class ObjectCreator
      ObjectCreator(size_t nObjSize， int iItemCount, Object* (*pfCreateObj)（void *）, bool bInit = true);    //是对象创建函数
      ~ObjectCreator();
 
-     int Initalize();
+     int Initialize();
      int MakeObject();
      int MakeWrappers();
      int CreateObject();
@@ -68,7 +68,7 @@ class Object
 public:
      Object();
      virtual ~Object();
-     virtual int Initalize() = 0;
+     virtual int Initialize() = 0;
      int GetObjectID();
 
      static void* operator new( size_t nSize ) throw();

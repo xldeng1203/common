@@ -67,7 +67,7 @@ ObjectCreator::ObjectCreator(size_t nObjSize， int iItemCount, Object* (*pfCrea
     m_pfCreateFunc = pfCreateObj;
     if (bInit)
     {
-        Initalize();
+        Initialize();
     }
 
     MakeObject();

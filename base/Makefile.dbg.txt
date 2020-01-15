@@ -14,7 +14,7 @@ C_ARGS = -g -Wall -rdynamic -d_FILE_OFFSET_BITS=64 $(INCLUDE) -fPIC -D_DEBUG
 BASELIB = lib/base.a
 VERSION_STR = +++ This is a DEBUG Lib!!  +++
 
-LIB_OBJS = epoll_helper.o log.o utility.o object_pool.o share_memory.o
+LIB_OBJS = epoll_helper.o log.o utility.o object_pool.o share_memory.o timer.o
 LIBOBJS = $(addprefix $(SRCPATH), $(LIB_OBJS))
 
 %.o : %.cpp
