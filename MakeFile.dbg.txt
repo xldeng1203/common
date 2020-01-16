@@ -1,19 +1,17 @@
 #include ./Makefile.mk
 
 all:
-    find $(DEV_PATH) -name "*.sh" | xargs chmod +x
-    
-
-    cd ./base && $(MAKE) -f Makefile.dbg.txt
+	find $(DEV_PATH) -name "*.sh" |xargs chmod +x
+	cd ./base && $(MAKE) -f Makefile.dbg.txt
 
 clean:
-    find . -name "*.o" | xargs rm -rf
-    #find . ! -path "./frame/battle/*" -name "*.a" | xargs rm -rf
+	find . -name "*.o" | xargs rm -rf
+	#find . ! -path "./frame/battle/*" -name "*.a" | xargs rm -rf
 
 dos:
-    find . -name "*.cc" | xargs dos2unix
+	find . -name "*.cc" | xargs dos2unix
 
 sh:
-    find . -name "*.sh" | xargs chmod +x
+	find . -name "*.sh" | xargs chmod +x
 
 
