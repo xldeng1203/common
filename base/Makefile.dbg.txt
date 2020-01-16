@@ -9,7 +9,7 @@ INSTALL_DIR = $(CURDIR)/lib/
 
 DBLIC = -L/usr/lib64/mysql -lmysqlclient_r -lz
 
-CPP_ARGS = $(CPP_FLAG) -g -WAll -rdynamic -D_FILE_OFFSET_BITS=64 $(INCLUDE) -fPIC -D_DEBUG
+CPP_ARGS = $(CPP_FLAG) -g -Wall -rdynamic -D_FILE_OFFSET_BITS=64 $(INCLUDE) -fPIC -D_DEBUG
 C_ARGS = -g -Wall -rdynamic -d_FILE_OFFSET_BITS=64 $(INCLUDE) -fPIC -D_DEBUG
 BASELIB = lib/base.a
 VERSION_STR = +++ This is a DEBUG Lib!!  +++
@@ -18,26 +18,26 @@ LIB_OBJS = epoll_helper.o log.o utility.o object_pool.o share_memory.o timer.o
 LIBOBJS = $(addprefix $(SRCPATH), $(LIB_OBJS))
 
 %.o : %.cpp
-    $(CPP) $(CPP_ARGS) -c $<
+	$(CPP) $(CPP_ARGS) -c $<
 
 %.o : %.c
-    $(CC) $(C_ARGS) -c $<
+	$(CC) $(C_ARGS) -c $<
 
 all : $(BASELIB)
 
 $(BASELIB) : $(LIBOBJS)
-    rm -f $@
-    ar rcs $@ $(LIB_OBJS)
-    @echo
-    @echo $(VERSION_STR)
-    @echo
+	rm -f $@
+	ar rcs $@ $(LIB_OBJS)
+	@echo
+	@echo $(VERSION_STR)
+	@echo
 
 clean:
-    rm -f $(BASELIB) $(LIB_OBJS)
+	rm -f $(BASELIB) $(LIB_OBJS)
 
 install:
-    mkdir $(INSTALL_DIR)/lib -p
-    cp $(BASELIB) $(INSTALL_DIR)/lib
-    cp $(SRCINCLUDE) $(INSTALL_DIR) -rv
+	mkdir $(INSTALL_DIR)/lib -p
+	cp $(BASELIB) $(INSTALL_DIR)/lib
+	cp $(SRCINCLUDE) $(INSTALL_DIR) -rv
 
 

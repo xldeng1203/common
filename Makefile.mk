@@ -1,7 +1,7 @@
 C_ARSG=
 # -D__INNER_DEBUG__PACKAGE_
 
-CPP_FLAG=-std=c++0x -Who-deprecated
+CPP_FLAG=-std=c++0x -Wno-deprecated
 
 SHARED = 
 
