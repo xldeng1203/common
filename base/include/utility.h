@@ -1,7 +1,11 @@
-/*
-     File creator: neil deng
-*/
-
+/*******************************************************************
+** File Name:       utility.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 #ifndef _UTILITY_H_
 #define _UTILITY_H_
 

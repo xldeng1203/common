@@ -1,6 +1,12 @@
-/*
-     File creator: neil deng
-*/
+
+/*******************************************************************
+** File Name:       share_memory.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef _SHARE_MEMORY_H_
 #define _SHARE_MEMORY_H_

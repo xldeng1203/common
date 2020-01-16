@@ -1,6 +1,11 @@
-/*
-     File creator: neil deng
-*/
+/*******************************************************************
+** File Name:       my_array.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef _MY_ARRAY_H_
 #define _MY_ARRAY_H_

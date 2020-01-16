@@ -1,6 +1,11 @@
-/*
-     File creator: neil deng
-*/
+/*******************************************************************
+** File Name:       objectqueue.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef _OBJQUEUE_H_
 #define _OBJQUEUE_H_

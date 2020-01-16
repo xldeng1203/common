@@ -1,6 +1,12 @@
-/*
-     File creator: neil deng
-*/
+
+/*******************************************************************
+** File Name:       timer.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef _TIMER_H_
 #define _TIMER_H_

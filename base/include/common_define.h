@@ -1,6 +1,11 @@
-/*
-     File creator: neil deng
-*/
+/*******************************************************************
+** File Name:       common_define.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef __COMMON_DEFINE_H__
 #define __COMMON_DEFINE_H__

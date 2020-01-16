@@ -1,6 +1,12 @@
-/*
-     File creator: neil deng
-*/
+
+/*******************************************************************
+** File Name:       singleton.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef _SINGLETON_H_
 #define _SINGLETON_H_

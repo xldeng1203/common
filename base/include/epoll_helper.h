@@ -1,7 +1,12 @@
 
-/*
-     File creator: neil deng
-*/
+/*******************************************************************
+** File Name:       epoll_helper.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef __EPOLLHELPER_H__
 #define __EPOLLHELPER_H__

@@ -1,6 +1,11 @@
-/*
-     File creator: neil deng
-*/
+/*******************************************************************
+** File Name:       object_pool.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef _OBJECT_POOL_H_
 #define _OBJECT_POOL_H_

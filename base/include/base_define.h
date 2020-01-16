@@ -1,6 +1,12 @@
-/*
-     File creator: neil deng
-*/
+
+/*******************************************************************
+** File Name:       base_define.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef _BASE_DEFINE_H_
 #define _BASE_DEFINE_H_

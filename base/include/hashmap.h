@@ -1,6 +1,12 @@
-/*
-     File creator: neil deng
-*/
+
+/*******************************************************************
+** File Name:       hashmap.h
+** Copy Right:      neil deng
+** File creator:    neil deng
+** Date:            
+** Version:
+** Desc:            
+********************************************************************/
 
 #ifndef __HASHMAP_H__
 #define __HASHMAP_H__
