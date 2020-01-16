@@ -42,14 +42,14 @@ bool IsSameHour(time_t tTime1, time_t tTime2);
 bool IsSameDay(time_t tTime1, time_t tTime2);
 char *GetDataTime(time_t *mytime);
 char *GetCurrentDataTime(void);
-int GetCurrnetDay(char *strTime);
+int GetCurrentDay(char *strTime);
 
 /************ 建立目录 ************/
 int MakeDir(const char *pcDirPath, pthread_mutex_t *pMutex = NULL);
 
 
 /************ 字符串相关 ************/
-void TromStr(char *strInput);
+void TrimStr(char *strInput);
 int Sockaddr_inToString(sockaddr_in *pstSockAddr, char *szResult);
 
 /************ 无符号加减法 ************/

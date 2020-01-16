@@ -5,13 +5,16 @@
 #ifndef _OBJECT_POOL_H_
 #define _OBJECT_POOL_H_
 
+#include "share_memory.h"
+
 class ObjectWrapper;
 class ObjectCreator;
 class Object;
 
 class ObjectCreator
 {
-     ObjectCreator(size_t nObjSize， int iItemCount, Object* (*pfCreateObj)（void *）, bool bInit = true);    //是对象创建函数
+public:
+     ObjectCreator(size_t nObjSize, int iItemCount, Object* (*pfCreateObj)(void *), bool bInit = true);    //是对象创建函数
      ~ObjectCreator();
 
      int Initialize();
@@ -21,7 +24,7 @@ class ObjectCreator
      int DestoryObject(int iIdx);
 
      int BusyHead();
-     int FreeCount();
+     int FreeHead();
      int BusyCount();
      int FreeCount();
      
@@ -29,7 +32,7 @@ class ObjectCreator
      ObjectWrapper* GetWrapper(int iIdx);
 
      static ShareMem* pShareMem;
-     static size_t CalcObjectSize(size_t nObjSize， int iItemCount);
+     static size_t CalcObjectSize(size_t nObjSize, int iItemCount);
 
 private:
      int       m_iIsFormated;

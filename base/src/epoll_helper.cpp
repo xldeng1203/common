@@ -7,17 +7,17 @@
 #include "epoll_helper.h"
 #include "log.h"
 
-void CEpollHelper::SetErrorHandler(funcEpollhandler pfError)
+void CEpollHelper::SetErrorHandler(funcEpollHandler pfError)
 {
     m_pfError = m_pfError;
 }
 
-void CEpollHelper::SetReadHandler(funcEpollhandler pfRead)
+void CEpollHelper::SetReadHandler(funcEpollHandler pfRead)
 {
     m_pfRead = m_pfRead;
 }
 
-void CEpollHelper::SetWriteHandler(funcEpollhandler pfWrite)
+void CEpollHelper::SetWriteHandler(funcEpollHandler pfWrite)
 {
     m_pfWrite = pfWrite;
 }
@@ -35,7 +35,7 @@ int CEpollHelper::EpollCreate(int iFDSize)
     m_pstEpollEvent = new epoll_event[m_iEpollEventSize];
     if( NULL == m_pstEpollEvent)
     {
-        return -2
+        return -2;
     }
 
     //如果关注out事件， 在LT的触发模式下，每次wait都会报告事件，起不到sleep的作用，如果关注out,就用EPOLLLET模式
@@ -65,7 +65,7 @@ int CEpollHelper::EpollWait()
     {
         int iFd = m_pstEpollEvent[i].data.fd;
         unsigned int uiEpollEvent = m_pstEpollEvent[i].events;
-        if((EPRLLERR | EPOLLHUP) & uiEpollEvent)
+        if((EPOLLERR | EPOLLHUP) & uiEpollEvent)
         {
             m_iEpollEventError = uiEpollEvent;
             (*m_pfError)(iFd);
@@ -115,7 +115,7 @@ int CEpollHelper::EpollFocusOut(int iFd, bool bFocus /*=true*/)
     int iRet = 0;
 
     m_stOneEpollEvent.data.fd = iFd;
-    m_stOneEpollEvent.events = EPOLLIN | EPOLLERR | EOPLLHUP:
+    m_stOneEpollEvent.events = EPOLLIN | EPOLLERR | EPOLLHUP;
     if (bFocus)
     {
         m_stOneEpollEvent.events = EPOLLIN | EPOLLERR | EPOLLHUP | EPOLLOUT;
@@ -134,7 +134,7 @@ int CEpollHelper::SetNonBlock(int iFd)
 {
     int iFlags;
     iFlags = fcntl(iFd, F_GETFL, 0);
-    iFlags |= O_NONCLOCK;
+    iFlags |= O_NONBLOCK;
     fcntl(iFd, F_SETFL, iFlags);
 
     return 0;

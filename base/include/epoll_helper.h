@@ -14,9 +14,9 @@ typedef int (*funcEpollHandler) (int);
 class CEpollHelper
 {
 public:
-    void SetErrorHandler(funcEpollhandler pfError);
-    void SetReadHandler(funcEpollhandler pfRead);
-    void SetWriteHandler(funcEpollhandler pfWrite);
+    void SetErrorHandler(funcEpollHandler pfError);
+    void SetReadHandler(funcEpollHandler pfRead);
+    void SetWriteHandler(funcEpollHandler pfWrite);
 public:
     int EpollCreate(int iFDSize);
     int EpollWait();
@@ -26,11 +26,7 @@ public:
     int SetNonBlock(int iFd);
 
     inline void SetEpollWaitingTime(int iEpollWaitingTime);
-
-    int GetEventErr()
-    {
-        return m_iEpollEventError;
-    }
+    inline int GetEventErr() { return m_iEpollEventError; }
 
 private:
     funcEpollHandler m_pfError;

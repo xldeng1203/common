@@ -19,7 +19,7 @@ public:
      void operator delete(void* pMem);
 
      void* AssignMemory(size_t nSize);
-     static unsigned char* pbCurrnetShm;
+     static unsigned char* pbCurrentShm;
 
      key_t m_nShmKey;
      size_t m_nShmSize;

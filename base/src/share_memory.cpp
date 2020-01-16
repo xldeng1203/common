@@ -15,7 +15,7 @@ unsigned char* ShareMem::pbCurrentShm = NULL;
 
 void* ShareMem::operator new(size_t nSize) throw()
 {
-    return (void*)pbCurrnetShm;
+    return (void*)pbCurrentShm;
 }
 
 void ShareMem::operator delete(void* pMem)
@@ -24,12 +24,12 @@ void ShareMem::operator delete(void* pMem)
 
 ShareMem::ShareMem()
 {
-    m_pbCurrentSegMent = pbCurrnetShm + sizeof(ShareMem);
+    m_pbCurrentSegMent = pbCurrentShm + sizeof(ShareMem);
 }
 
 ShareMem::ShareMem(key_t nKey, int nSize)
 {
-    m_pbCurrentSegMent = pbCurrnetShm + sizeof(ShareMem);
+    m_pbCurrentSegMent = pbCurrentShm + sizeof(ShareMem);
     m_nShmKey = nKey;
     m_nShmSize = nSize;
 }
@@ -54,7 +54,7 @@ void* ShareMem::AssignMemory(size_t nSize)
         return NULL;
     }
     
-    pTemp = m_pbCurrentSegMent；
+    pTemp = m_pbCurrentSegMent;
     m_pbCurrentSegMent += nSize;
 
     return (void*)pTemp;
@@ -92,7 +92,7 @@ ShareMem* ShareMem::MakeShm(const char* szFile, char byProjID, int iSize)
 
         ANY_LOG("Same shm seq (key=%08X) exist, now try to attach it... \n", iKey);        
         
-        iShmId = shmget(iKey, iTempShmSize， 0666);
+        iShmId = shmget(iKey, iTempShmSize, 0666);
         if (iShmId < 0)
         {
             ANY_LOG("Attach to shm %d failed, %s. Now try to touch it\n", iShmId, strerror(errno));
@@ -127,8 +127,8 @@ ShareMem* ShareMem::MakeShm(const char* szFile, char byProjID, int iSize)
 
     ANY_LOG("ok alloced shm key = %08X, id = %d, size = %u\n", iKey, iShmId, iTempShmSize);
     
-    ShareMem::pbCurrnetShm = (unsigned char*)shmat(iShmId, NULL, 0);
-    if ( !(ShareMem::pbCurrnetShm) )
+    ShareMem::pbCurrentShm = (unsigned char*)shmat(iShmId, NULL, 0);
+    if ( !(ShareMem::pbCurrentShm) )
     {
         return NULL;
     }

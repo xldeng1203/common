@@ -28,9 +28,13 @@ public:
      virtual ~Timer() {}
 
 public:
-     virtual Initialize();
+     virtual int Initialize();
 
-     inline int RegisterHandler(HandleTimeout pfcHandler) {m_pfcHandler = pfcHandler;}
+     inline int RegisterHandler(HandleTimeout pfcHandler) 
+     {
+          m_pfcHandler = pfcHandler;
+          return 0;
+     }
 
      timeval m_tvCreateTimeval;
      TTimerItem m_stTimerItem;

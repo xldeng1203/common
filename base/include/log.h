@@ -38,12 +38,12 @@ void DebugLog(const char *sFormat, ...);
 void DebugLevelLog(int iLogLevel, const char *szFormat, ...);
 
 int WritePlayerLog(int iLogLevel, unsigned int uiPlayerUid, const char* szConTent, ...);
-int WritePlayerLog(unisgned int uiPlayerUid, const char* szContent, ...);
+int WritePlayerLog(unsigned int uiPlayerUid, const char* szContent, ...);
 
 int WriteTeamLog(int iLogLevel, unsigned int uiTeamId, const char *szContent, ...);
 int WriteTeamLog(unsigned int uiTeamId, const char* szContent, ...);
 
-int WriteErrorLog(const chart *szContent, ...);
+int WriteErrorLog(const char *szContent, ...);
 
 bool IsNeedToTracePlayer(int iLogLevel, unsigned int uiUID);
 int LoadTraceUID(const char *pCfgFile);

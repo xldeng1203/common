@@ -43,7 +43,7 @@ int TimerMgr::Initialize( int iTimerCount /* = MAX_TIMER_NUM */)
 //返回定时器的ObjectID, 如果小于0, 则表示失败
 int TimerMgr::CreateTimer(TTimerItem* pTimerItem, HandleTimeout pfcHandler, timeval stCreateTimeval)
 {
-    if (!pTimerItem || !pfcHandle)
+    if (!pTimerItem || !pfcHandler)
     {
         return -1;
     }
@@ -116,7 +116,7 @@ int TimerMgr::CheckTimeout( timeval tvNow)
         TimevalMinutes(tvNow, pTimer->m_tvCreateTimeval, tvPassed);
 
         //超时了，要按下边的顺序执行
-        if ((tvPassed.ev_sec * 1000 + tv_Passed.tv_usec / 1000) >= pTimer->m_stTimerItem.m_iTimeoutMS)
+        if ((tvPassed.tv_sec * 1000 + tvPassed.tv_usec / 1000) >= pTimer->m_stTimerItem.m_iTimeoutMS)
         {
             //1. 记下来超时的对象ID
             int iDestoryID = iTimerID;
@@ -128,7 +128,7 @@ int TimerMgr::CheckTimeout( timeval tvNow)
             }
     
             //3. 获取下一个对象
-            iTimerID = pWrapper->GetWrapperObj();
+            iTimerID = pWrapper->GetNextIdx();
 
             //4. 销毁
             m_pTimerCreator->DestoryObject(iDestoryID);

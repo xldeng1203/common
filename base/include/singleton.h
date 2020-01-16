@@ -27,7 +27,7 @@ public:
           return *m_singleton;          
      }
 
-     template <tempname Type1>
+     template <typename Type1>
      static Type1& get_singleton()
      {
           if (m_singleton == NULL)

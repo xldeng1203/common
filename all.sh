@@ -1,0 +1,1 @@
+make clean -f MakeFile.dbg.txt ; make -f MakeFile.dbg.txt -j16

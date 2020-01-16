@@ -34,9 +34,9 @@ int GetTimeStruct(time_t tTime, TimeStruct *pstTime)
 int TimevalPlus(timeval& tvA, timeval& tvB, timeval &tvResult)
 {
     timeval tvTemp;
-    tvTemp.tv_sec = tvA.tv_sec + tbB.tv_sec;
-    tvTemp.tv_sec += ((tvA.tv_usec + tvb.tv_usec) / 1000000);
-    tvTemp.tv_usec = ((tvA.tv_usec + tvb.tv_usec) % 1000000);
+    tvTemp.tv_sec = tvA.tv_sec + tvB.tv_sec;
+    tvTemp.tv_sec += ((tvA.tv_usec + tvB.tv_usec) / 1000000);
+    tvTemp.tv_usec = ((tvA.tv_usec + tvB.tv_usec) % 1000000);
 
     tvResult.tv_sec = tvTemp.tv_sec;
     tvResult.tv_usec = tvTemp.tv_usec;
@@ -48,15 +48,15 @@ int TimevalMinus(timeval& tvA, timeval& tvB, timeval &tvResult)
 {
     timeval tvTemp;
 
-    if (tvA.tv_usec < tvB.ev_usec)
+    if (tvA.tv_usec < tvB.tv_usec)
     {
         tvTemp.tv_usec = (1000000 + tvA.tv_usec) - tvB.tv_usec;
-        tvTemp.tv_sec = tvA.tv_sec - tbB.tv_sec - 1;
+        tvTemp.tv_sec = tvA.tv_sec - tvB.tv_sec - 1;
     }
     else
     {
-        tvTemp.tv_usec = tvA.tv_usec - tbB.tv_usec;
-        tvTemp.tv_sec = tvA.tv_sec - tbB.tv_sec;
+        tvTemp.tv_usec = tvA.tv_usec - tvB.tv_usec;
+        tvTemp.tv_sec = tvA.tv_sec - tvB.tv_sec;
     }
     
     tvResult.tv_sec = tvTemp.tv_sec;
@@ -127,13 +127,13 @@ char *GetDataTime(time_t *mytime)
     curr = *localtime(mytime);
     if(curr.tm_year > 50)
     {
-        sprintf(s, "%04d-%02d-%02d %02d:%02d:%02d"， 
+        sprintf(s, "%04d-%02d-%02d %02d:%02d:%02d",
         curr.tm_year+1900, curr.tm_mon+1, curr.tm_mday, 
         curr.tm_hour, curr.tm_min, curr.tm_sec);
     }
     else
     {
-        sprintf(s, "%04d-%02d-%02d %02d:%02d:%02d"， 
+        sprintf(s, "%04d-%02d-%02d %02d:%02d:%02d",
         curr.tm_year+2000, curr.tm_mon+1, curr.tm_mday, 
         curr.tm_hour, curr.tm_min, curr.tm_sec);
     }
@@ -232,7 +232,7 @@ void TrimStr( char *strInput)
     }
 
     pe = &strInput[iTempLen-1];
-    while((pe >=pb) && (pe == ' ') || (*pe == '\t') || (*pe == '\n') || (*pe == '\r'))
+    while((pe >= pb) && ((*pe == ' ') || (*pe == '\t') || (*pe == '\n') || (*pe == '\r')))
     {
         pe --;
     }

@@ -29,7 +29,7 @@ int Object::GetObjectID()
     return m_iObjectID;
 }
 
-size_t ObjectCreator::CalcObjectSize(size_t nObjSize， int iItemCount)
+size_t ObjectCreator::CalcObjectSize(size_t nObjSize, int iItemCount)
 {
     size_t iTempSize = 0;
 
@@ -40,7 +40,7 @@ size_t ObjectCreator::CalcObjectSize(size_t nObjSize， int iItemCount)
     return iTempSize;
 }
 
-ObjectCreator::ObjectCreator(size_t nObjSize， int iItemCount, Object* (*pfCreateObj)（void *）, bool bInit /* = true*/)
+ObjectCreator::ObjectCreator(size_t nObjSize, int iItemCount, Object* (*pfCreateObj)(void *), bool bInit /* = true*/)
 {
     
     /*if ( !pSharedMem)
@@ -108,7 +108,7 @@ int ObjectCreator::Initialize()
 
 int ObjectCreator::MakeObject()
 {
-    Object* pTempObj；
+    Object* pTempObj = NULL;
     if ( !m_pfCreateFunc )
     {
         return -1;
@@ -124,7 +124,7 @@ int ObjectCreator::MakeObject()
     return 0;
 }
 
-int ObjectCreateor::MakeWrappers()
+int ObjectCreator::MakeWrappers()
 {
     m_iFreeHead = 0;
     m_iBusyHead = -1;
@@ -139,26 +139,26 @@ int ObjectCreateor::MakeWrappers()
         m_pWrappers[i].m_iPrevIdx = i - 1;
     }
     
-    m_pWrappers[m_iItemCount-1].m_iNextId = -1;
+    m_pWrappers[m_iItemCount-1].m_iNextIdx = -1;
     return 0;
 }
 
-int ObjectCreateor::BusyCount()
+int ObjectCreator::BusyCount()
 {
     return m_iBusyCount;
 }
 
-int ObjectCreateor::FreeCount()
+int ObjectCreator::FreeCount()
 {
     return m_iItemCount - m_iBusyCount;
 }
 
-int ObjectCreateor::BusyHead()
+int ObjectCreator::BusyHead()
 {
     return m_iBusyHead;
 }
 
-int ObjectCreateor::FreeHead()
+int ObjectCreator::FreeHead()
 {
     return m_iFreeHead;
 }
@@ -286,7 +286,12 @@ void ObjectWrapper::Initialize()
     m_pAttachedObj = NULL;
 }
 
-int ObjectWrapper::GetWrapperObj()
+int ObjectWrapper::GetNextIdx()
+{
+    return m_iNextIdx;
+}
+
+Object* ObjectWrapper::GetWrapperObj()
 {
     return m_pAttachedObj;
 }

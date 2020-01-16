@@ -16,7 +16,7 @@
 static char sLogFile[200];
 static long lMaxLogSize;
 static int iMaxLogNum;
-static iLogInitialized = 0;
+static int iLogInitialized = 0;
 
 extern int g_iLogLevel;
 
@@ -153,7 +153,7 @@ void LevelLog(int iLogLevel, const char *szFormat, ...)
         return;
     }
 
-    va_lsit ap;
+    va_list ap;
     if (iLogInitialized != 0)
     {
         va_start(ap, szFormat);
@@ -183,7 +183,7 @@ void DebugLevelLog(int iLogLevel, const char *szFormat, ...)
         return;
     }
 
-    va_lsit ap;
+    va_list ap;
     if (iLogInitialized != 0)
     {
         va_start(ap, szFormat);
@@ -221,7 +221,7 @@ int WritePlayerLog(int iLogLevel, unsigned int uiPlayerUid, const char* szConTen
         NULL, 
         szConTent, 
         ap);
-    var_end(ap);
+    va_end(ap);
     return iRet;
 }
 
@@ -241,7 +241,7 @@ int WriteErrorLog(const char* szConTent, ...)
         szErrorInfo, 
         szConTent, 
         ap);
-    var_end(ap);
+    va_end(ap);
     return iRet;
 }
 
@@ -339,8 +339,8 @@ int WriteTeamLog(int iLogLevel, unsigned int uiTeamId, const char* szContent, ..
 
     int iRet = -1;
     char szPathName[256];
-    char szPathName[256];
-    char szPathName[256];
+    char szFileName[256];
+    char szCurData[256];
 
     sprintf(szPathName, "../log/team");
     if(MakeDir(szPathName) < 0)
@@ -348,17 +348,17 @@ int WriteTeamLog(int iLogLevel, unsigned int uiTeamId, const char* szContent, ..
         return -1;
     }
     
-    GetCurrentDay((char *)szCurDate);
-    sprintf(szFileName, "%s/t%07u_%s", szPathName, uiTeamId, szCurDate);
+    GetCurrentDay((char *)szCurData);
+    sprintf(szFileName, "%s/t%07u_%s", szPathName, uiTeamId, szCurData);
     va_list ap;
 
-    va_start(ap, szConTent);
+    va_start(ap, szContent);
     iRet = VWriteLog(szFileName, 
         0x2000000, 5, 
         NULL, 
-        szConTent, 
+        szContent, 
         ap);
-    var_end(ap);
+    va_end(ap);
     return iRet;
 }
 
