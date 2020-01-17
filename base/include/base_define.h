@@ -11,7 +11,7 @@
 #ifndef _BASE_DEFINE_H_
 #define _BASE_DEFINE_H_
 
-#include <string.h>
+#include <string>
 #include <stdarg.h>
 #include <cstdlib>
 #include <cstdio>
@@ -22,7 +22,7 @@ using std::string;
 //tolua_begin
 typedef float           f32;
 typedef double          f64;
-typedef unsigned char   bytes;  //字节类型 8位无符号整数
+typedef unsigned char   byte;  //字节类型 8位无符号整数
 typedef byte            uint8;
 typedef char            int8;
 
@@ -35,7 +35,7 @@ typedef signed long     int64;   //64位有符号整数
 typedef unsigned long   uint64;  //4字类型，64位无符号整数
 typedef int             int32;
 
-typedef wchar_t         wchar;  //款富豪
+typedef wchar_t         wchar;  //宽符号
 typedef void *          pointer;//无类型指针
 typedef uint64          datatime_t;
 typedef int             SOCKET;
@@ -100,14 +100,14 @@ typedef void* LZ_POINT;
 #define LZ_USHORT_HIGH(i)         ((unsigned char)((unsigned short)(i) >> 8))
 
 //2个unsigned short 和unsigned int 的转换
-#define LZ_USHORT_MAKE(high, low) ((unsigned int)(((unsigned short)((low)& 0xFFFF)) | (( unsigned int)((unsigned short)((high) & 0xFFFF))) << 16))
-#define LZ_USHORT_LOW(i)          ((unsigned short)((unsigned int)(i) & )0xFFFF))
-#define LZ_USHORT_HIGH(i)         ((unsigned short)((unsigned int)(i) >> 16))
+#define LZ_UINT_MAKE(high, low) ((unsigned int)(((unsigned short)((low)& 0xFFFF)) | (( unsigned int)((unsigned short)((high) & 0xFFFF))) << 16))
+#define LZ_UINT_LOW(i)          ((unsigned short)((unsigned int)(i) & )0xFFFF))
+#define LZ_UINT_HIGH(i)         ((unsigned short)((unsigned int)(i) >> 16))
 
 //2个unsigned int 和unsigned int64 的转换
-#define LZ_USHORT_MAKE(high, low) ((uint64)(((unsigned int)((low)& 0xFFFFFFFF)) | ((uint64)((unsigned int)((high) & 0xFFFFFFFF))) << 32))
-#define LZ_USHORT_LOW(i)          ((unsigned int)((uint64)(i) & )0xFFFFFFFF))
-#define LZ_USHORT_HIGH(i)         ((unsigned int)((uint64)(i) >> 32))
+#define LZ_UINT64_MAKE(high, low) ((uint64)(((unsigned int)((low)& 0xFFFFFFFF)) | ((uint64)((unsigned int)((high) & 0xFFFFFFFF))) << 32))
+#define LZ_UINT64_LOW(i)          ((unsigned int)((uint64)(i) & )0xFFFFFFFF))
+#define LZ_UINT64_HIGH(i)         ((unsigned int)((uint64)(i) >> 32))
 
 //32位的位操作
 //pos的取值范围是0--31
@@ -145,7 +145,7 @@ enum
 {
     LZ_PATH_MAX = 1024,         //路径的最大长度
     LZ_MAX_IPLEN = 32,          //IP地址的最大长度
-    LZ_INT_MAX = 0x7FFFFFFF     //int类型的最大值
+    LZ_INT_MAX = 0x7FFFFFFF,     //int类型的最大值
     LZ_CONF_TXT_MAX = 1024,     //最大文本配置长度
 };
 
