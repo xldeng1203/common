@@ -9,24 +9,24 @@
 #ifndef _TCPSOCKET_H_
 #define _TCPSOCKET_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <errno.h>
-#include <signal.h>
-#include <netinet/in.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <sys/file.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <dirent.h>
-#include <dlfcn.h>
-#include <pthread.h>
-#include <netdb.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// #include <time.h>
+// #include <errno.h>
+// #include <signal.h>
+// #include <netinet/in.h>
+// #include <unistd.h>
+// #include <sys/time.h>
+// #include <sys/file.h>
+// #include <sys/types.h>
+// #include <sys/stat.h>
+// #include <sys/socket.h>
+// #include <arpa/inet.h>
+// #include <dirent.h>
+// #include <dlfcn.h>
+// #include <pthread.h>
+// #include <netdb.h>
 
 
 #define DEFAULT_RECV_USER_BUFFER_SIZE 1048576    //1M

@@ -15,7 +15,7 @@ BASELIB = lib/base.a
 VERSION_STR = +++ This is a DEBUG Lib!!  +++
 
 LIB_OBJS = epoll_helper.o log.o utility.o object_pool.o share_memory.o timer.o string_utils.o tcp_socket.o \
-		   thread_base.o
+		   thread_base.o unix_socket.o
 LIBOBJS = $(addprefix $(SRCPATH), $(LIB_OBJS))
 
 %.o : %.cpp
