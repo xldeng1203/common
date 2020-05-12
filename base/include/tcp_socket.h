@@ -87,6 +87,7 @@ public:
 public:
     static int SetSysBuffLen(int iFD, int iSysRecvBufLen, int iSysSendBufLen);
     static int SetNonBlock(int iFD);
+    static int SetNonDelay(int iFD);
 
 private:
     int m_iSocketFD;        //socket描述符

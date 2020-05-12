@@ -18,6 +18,7 @@
 #include <dlfcn.h>
 #include <pthread.h>
 #include <netdb.h>
+#include <netinet/tcp.h>
 
 
 #include "log.h"
@@ -752,7 +753,19 @@ int TcpConnectionInt::SetNonBlock(int iFD)
     iFlags |= O_NONBLOCK;
     iFlags |= O_NDELAY;
     fcntl(iFD, F_SETFL, iFlags);
+    JHTcpConnectionInt::SetNoDelay(iFD);
     return 0;
+}
+
+int JHTcpConnectionInt::SetNoDelay( int iFD )
+{
+	int iYes = 1;
+	if (setsockopt(iFD, IPPROTO_TCP, TCP_NODELAY, &iYes, sizeof(iYes)) == -1)
+	{
+		printf("SetNoDelay failed， %s.\n", strerror(errno));
+		return -1;
+	}
+	return 0;
 }
 
 int TcpConnectionInt::LeftLength()
