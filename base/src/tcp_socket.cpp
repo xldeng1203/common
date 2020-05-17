@@ -753,11 +753,11 @@ int TcpConnectionInt::SetNonBlock(int iFD)
     iFlags |= O_NONBLOCK;
     iFlags |= O_NDELAY;
     fcntl(iFD, F_SETFL, iFlags);
-    JHTcpConnectionInt::SetNoDelay(iFD);
+    TcpConnectionInt::SetNoDelay(iFD);
     return 0;
 }
 
-int JHTcpConnectionInt::SetNoDelay( int iFD )
+int TcpConnectionInt::SetNoDelay( int iFD )
 {
 	int iYes = 1;
 	if (setsockopt(iFD, IPPROTO_TCP, TCP_NODELAY, &iYes, sizeof(iYes)) == -1)
